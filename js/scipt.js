@@ -21,14 +21,49 @@ for(i=0; i<excel.length;i++){
   excel[i].setAttribute("posx",x);
   excel[i].setAttribute("posy",y);
   x++;
+  //add attribute x,y
 }
 
-function generateSnake() {
-   let posX = Math.round(Math.random() * (1 - 10) + 1);
-       posY = Math.round(Math.random() * (1 - 10) + 1);
+function generateSnake() {//generate randdom dots spawh x 1-10/y 1-10
+   let posX = Math.round(Math.random() * (10 - 3) + 3);
+   let posY = Math.round(Math.random() * (10 - 1) + 1);
        return [posX, posY];
 }
 
 let coordinates = generateSnake();
-console.log(coordinates[0]);
-console.log(coordinates[1]);
+    snakeBody   = [document.querySelector('[posX = "' + coordinates[0] + '"][posY = "' + coordinates[1] + '"]'), 
+                  //search coordinates(generateSnake) and equating to coordinates(snakeBody)
+                   document.querySelector('[posX = "' + (coordinates[0] - 1 )+ '"][posY = "' + coordinates[1] + '"]'),
+                   document.querySelector('[posX = "' + (coordinates[0] - 2 )+ '"][posY = "' + coordinates[1] + '"]')];
+    for(i = 0; i < snakeBody.length; i++){
+        snakeBody[i].classList.add('snakeBody')
+
+    }
+    
+    snakeBody[0].classList.add('snakeHead');
+    
+    let mouse;
+
+    function createMause(){
+        function generateMouse() {//generate randdom dots spawh mouse x 1-10/y 1-10
+            let posX = Math.round(Math.random() * (10 - 1) + 1);
+            let posY = Math.round(Math.random() * (10 - 1) + 1);
+                return [posX, posY];
+         }
+         
+         let mouseCoordinates = generateMouse();
+             mouse            = document.querySelector('[posX = "' + mouseCoordinates[0] + '"][posY = "' + mouseCoordinates[1] + '"]');
+             mouse.classList.add('mouse');
+
+            while(mouse.classList.contains('snakeBody','snakeHead')){
+                let mouseCoordinates = generateMouse();
+                    mouse            = document.querySelector('[posX = "' + mouseCoordinates[0] + '"][posY = "' + mouseCoordinates[1] + '"]');
+            }
+
+         console.log(mouse)
+    }
+    createMause()
+
+    function move(){
+        
+    }

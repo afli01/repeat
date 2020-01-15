@@ -40,4 +40,12 @@ body {
   border-radius: 50%;
   background-color: black;
 }
+
+.mouse {
+  width: 45px;
+  height: 45px;
+  padding: 5px;
+  border-radius: 50%;
+  background-color: blue;
+}
 /*# sourceMappingURL=style.css.map */
