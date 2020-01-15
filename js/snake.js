@@ -24,7 +24,7 @@ for(i=0; i<excel.length;i++){
   //add attribute x,y
 }
 
-function generateSnake() {//generate randdom dots spawh x 1-10/y 1-10
+function generateSnake() {//generate randdom dots spawn snake x 1-10/y 1-10
    let posX = Math.round(Math.random() * (10 - 3) + 3);
    let posY = Math.round(Math.random() * (10 - 1) + 1);
        return [posX, posY];
@@ -65,5 +65,18 @@ let coordinates = generateSnake();
     createMause()
 
     function move(){
-        
+        let snakeCoordinates = [snakeBody[0].getAttribute('posX'),snakeBody[0].getAttribute('posY')];
+        snakeBody[0].classList.remove('head');
+        snakeBody[snakeBody.length-1].classList.remove('snakeBody');
+        snakeBody.pop();
+
+        snakeBody.unshift(document.querySelector([posX = "' + (+ snakeCoordinates[0] +1) + '"][posY = "' + snakeCoordinates[1] + '"]));
+
+        snakeBody[0].classList.add('head');
+        for(i = 0; i < snakeBody.length; i++){
+            snakeBody[i].classList.add('snakeBody');
+    
+        }
     }
+
+    let intetva = setInterval(move, 3000);
