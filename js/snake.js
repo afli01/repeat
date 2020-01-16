@@ -65,14 +65,15 @@ let coordinates = generateSnake();
     createMause()
 
     function move(){
-        let snakeCoordinates = [snakeBody[0].getAttribute('posX'),snakeBody[0].getAttribute('posY')];
-        snakeBody[0].classList.remove('head');
+        let snakeCoordinates = [snakeBody[0].getAttribute('posX'), snakeBody[0].getAttribute('posY')];
+        snakeBody[0].classList.remove('snakeHead');
         snakeBody[snakeBody.length-1].classList.remove('snakeBody');
         snakeBody.pop();
 
         snakeBody.unshift(document.querySelector([posX = "' + (+ snakeCoordinates[0] +1) + '"][posY = "' + snakeCoordinates[1] + '"]));
 
-        snakeBody[0].classList.add('head');
+        snakeBody[0].classList.add('snakeHead');
+
         for(i = 0; i < snakeBody.length; i++){
             snakeBody[i].classList.add('snakeBody');
     
